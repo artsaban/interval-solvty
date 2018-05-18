@@ -5,6 +5,7 @@ import net.java.jinterval.interval.set.SetIntervalContext;
 import ru.nsc.interval.solvty.IEstimator;
 
 public class TolEstimator implements IEstimator {
+
     @Override
     public SetInterval calcEstimation(SetInterval[] x, SetInterval[][] a, SetInterval[] b, SetIntervalContext ic) {
         int m = b.length;
@@ -31,19 +32,22 @@ public class TolEstimator implements IEstimator {
                 );
             }
 
-            hl = ic.abs(
-                ic.sub(
-                    ic.numsToInterval(b[i].mid(), b[i].mid()),
-                    sumOfMax
-                )
+            hl = ic.sub(
+                ic.numsToInterval(b[i].mid(), b[i].mid()),
+                sumOfMax
             );
 
-            hr = ic.abs(
-                ic.sub(
-                    ic.numsToInterval(b[i].mid(), b[i].mid()),
-                    sumOfMin
-                )
+            hr = ic.sub(
+                ic.numsToInterval(b[i].mid(), b[i].mid()),
+                sumOfMin
             );
+
+            // Tol^{abs}
+            hl = ic.abs(hl);
+            hr = ic.abs(hr);
+
+//            // Tol
+//            hl = ic.neg(hl);
 
             tt = ic.sub(
                 ic.numsToInterval(b[i].rad(), b[i].rad()),

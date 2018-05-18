@@ -7,13 +7,16 @@ import net.java.jinterval.rational.ExtendedRational;
 import net.java.jinterval.rational.ExtendedRationalContext;
 import net.java.jinterval.rational.ExtendedRationalContexts;
 import optimization.ListItem;
+import optimization.ListItemGradient;
 import ru.nsc.interval.solvty.Utils;
-import ru.nsc.interval.solvty.tol.Tol;
-import ru.nsc.interval.solvty.tol.TolEstimator;
-import ru.nsc.interval.solvty.tol.TolMeanValueEstimator;
-import ru.nsc.interval.solvty.tol.TolSolvty;
+import ru.nsc.interval.solvty.tol.*;
+import ru.nsc.interval.solvty.uni.Uni;
+import ru.nsc.interval.solvty.uni.UniEstimator;
 import ru.nsc.interval.solvty.uni.UniSolvty;
+import ru.nsc.interval.solvty.uns.Uns;
+import ru.nsc.interval.solvty.uns.UnsEstimator;
 import ru.nsc.interval.solvty.uns.UnsSolvty;
+import ru.nsc.interval.solvty.uss.UssEstimator;
 import ru.nsc.interval.solvty.uss.UssSolvty;
 
 import java.util.Arrays;
@@ -83,20 +86,25 @@ public class Main {
             ic.numsToInterval(-1000000, 1000000),
             ic.numsToInterval(-1000000, 1000000),
             ic.numsToInterval(-1000000, 1000000),
-            ic.numsToInterval(-1000000, 1000000),
+            ic.numsToInterval(-1000000, 1000000)
         };
 
-        ExtendedRational eps = ExtendedRational.valueOf(1.e-2);
+        ExtendedRational eps = ExtendedRational.valueOf(1.e-6);
 
         TolSolvty tolSolvty = new TolSolvty();
-        UniSolvty uniSolvty = new UniSolvty();
-        UssSolvty ussSolvty = new UssSolvty();
-        UnsSolvty unsSolvty = new UnsSolvty();
+        TolSolvtyGradient tolSolvtyGradient = new TolSolvtyGradient();
 
-        double startTime = System.currentTimeMillis();
-        PriorityQueue<ListItem> foo = unsSolvty.getInstance().calc(x, a, b, eps, ic, rc);
-        double endTime = System.currentTimeMillis();
-        System.out.println((endTime - startTime) / 1000);
-        System.out.println(foo.peek());
+        long startTime = System.nanoTime();
+
+
+//        PriorityQueue<ListItem> foo = tolSolvty.getInstance().calc(x, a, b, eps, ic, rc);
+//        System.out.println(foo.peek());
+
+        PriorityQueue<ListItemGradient> bar = tolSolvtyGradient.getInstance().calc(x, a, b, eps, ic, rc);
+        System.out.println(bar.peek());
+
+        long endTime = System.nanoTime();
+        long totalTime = endTime - startTime;
+        System.out.println(totalTime / 1000000000.0);
     }
 }

@@ -35,10 +35,10 @@ public class IntervalSolvty implements IIntervalSolvty {
         wList.add(new ListItem(x, tmp, tmp.wid()));
         while (wList.peek().getEstimation().wid().gt(eps)) {
             box = wList.poll().getArgument();
-//            index = basicChooseRule(box);
-            gr = getRandomIntervalGradient(box, 3, a, b, ic);
+            index = basicChooseRule(box);
+//            gr = getRandomIntervalGradient(box, 3, a, b, ic);
 //            gr = getEndpointsIntervalGradient(box, a, b, ic);
-            index = altChooseRule(box, gr, ic, rc);
+//            index = altChooseRule(box, gr, ic, rc);
             initElem(box, index, a, b, ic, wList);
         }
 

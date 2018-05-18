@@ -15,10 +15,10 @@ public class Gradient {
         Arrays.fill(dx, ic.numsToInterval(0, 0));
         this.x = x;
         dx[coordinate] = ic.numsToInterval(1, 1);
-        this.dx = dx.clone();
+        this.dx = dx;
     }
 
-    Gradient(SetInterval x, SetInterval[] dx) {
+    public Gradient(SetInterval x, SetInterval[] dx) {
         this.x = x;
         this.dx = dx;
     }
@@ -30,14 +30,14 @@ public class Gradient {
         this.dx = dx;
     }
 
-    Gradient(double number, int length, SetIntervalContext ic) {
+    public Gradient(double number, int length, SetIntervalContext ic) {
         this.x = ic.numsToInterval(number, number);
         SetInterval[] dx = new SetInterval[length];
         Arrays.fill(dx, ic.numsToInterval(0, 0));
         this.dx = dx;
     }
 
-    Gradient(ExtendedRational number, int length, SetIntervalContext ic) {
+    public Gradient(ExtendedRational number, int length, SetIntervalContext ic) {
         this.x = ic.numsToInterval(number, number);
         SetInterval[] dx = new SetInterval[length];
         Arrays.fill(dx, ic.numsToInterval(0, 0));
