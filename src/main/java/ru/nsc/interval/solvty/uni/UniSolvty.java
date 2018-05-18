@@ -10,7 +10,7 @@ public class UniSolvty implements IWithEstimator {
     public IIntervalSolvty getInstance() {
         return new IntervalSolvty(
             new UniEstimator(),
-            new UniGradient()
+            new UniSupergradient()
         );
     }
 

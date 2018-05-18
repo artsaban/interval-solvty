@@ -6,7 +6,7 @@ import ru.nsc.interval.solvty.ISupergradientEvaluator;
 
 import java.util.Arrays;
 
-public class UnsGradient implements ISupergradientEvaluator {
+public class UnsSupergradient implements ISupergradientEvaluator {
     @Override
     public double[] calc(double[] x, SetInterval[][] a, SetInterval[] b, SetIntervalContext ic) {
         int m = a.length;

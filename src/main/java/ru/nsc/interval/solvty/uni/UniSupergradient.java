@@ -4,7 +4,7 @@ import net.java.jinterval.interval.set.SetInterval;
 import net.java.jinterval.interval.set.SetIntervalContext;
 import ru.nsc.interval.solvty.ISupergradientEvaluator;
 
-public class UniGradient implements ISupergradientEvaluator {
+public class UniSupergradient implements ISupergradientEvaluator {
     @Override
     public double[] calc(double[] x, SetInterval[][] a, SetInterval[] b, SetIntervalContext ic) {
         int m = a.length;

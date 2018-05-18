@@ -13,11 +13,14 @@ import ru.nsc.interval.solvty.tol.*;
 import ru.nsc.interval.solvty.uni.Uni;
 import ru.nsc.interval.solvty.uni.UniEstimator;
 import ru.nsc.interval.solvty.uni.UniSolvty;
+import ru.nsc.interval.solvty.uni.UniSolvtyGradient;
 import ru.nsc.interval.solvty.uns.Uns;
 import ru.nsc.interval.solvty.uns.UnsEstimator;
 import ru.nsc.interval.solvty.uns.UnsSolvty;
+import ru.nsc.interval.solvty.uns.UnsSolvtyGradient;
 import ru.nsc.interval.solvty.uss.UssEstimator;
 import ru.nsc.interval.solvty.uss.UssSolvty;
+import ru.nsc.interval.solvty.uss.UssSolvtyGradient;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;
@@ -92,15 +95,21 @@ public class Main {
         ExtendedRational eps = ExtendedRational.valueOf(1.e-6);
 
         TolSolvty tolSolvty = new TolSolvty();
+        UniSolvty uniSolvty = new UniSolvty();
+        UssSolvty ussSolvty = new UssSolvty();
+        UnsSolvty unsSolvty = new UnsSolvty();
+
         TolSolvtyGradient tolSolvtyGradient = new TolSolvtyGradient();
+        UniSolvtyGradient uniSolvtyGradient = new UniSolvtyGradient();
+        UssSolvtyGradient ussSolvtyGradient = new UssSolvtyGradient();
+        UnsSolvtyGradient unsSolvtyGradient = new UnsSolvtyGradient();
 
         long startTime = System.nanoTime();
 
-
-//        PriorityQueue<ListItem> foo = tolSolvty.getInstance().calc(x, a, b, eps, ic, rc);
+//        PriorityQueue<ListItem> foo = uniSolvty.getInstance().calc(x, a, b, eps, ic, rc);
 //        System.out.println(foo.peek());
 
-        PriorityQueue<ListItemGradient> bar = tolSolvtyGradient.getInstance().calc(x, a, b, eps, ic, rc);
+        PriorityQueue<ListItemGradient> bar = uniSolvtyGradient.getInstance().calc(x, a, b, eps, ic, rc);
         System.out.println(bar.peek());
 
         long endTime = System.nanoTime();

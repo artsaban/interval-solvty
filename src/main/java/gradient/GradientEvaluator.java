@@ -54,6 +54,11 @@ public class GradientEvaluator {
         return sub(g1, g2);
     }
 
+    public Gradient sub(Gradient g1, ExtendedRational num) {
+        Gradient g2 = new Gradient(num, n, ic);
+        return sub(g1, g2);
+    }
+
     public Gradient mul(Gradient g1, Gradient g2) {
         SetInterval x = ic.mul(g1.x, g2.x);
         SetInterval[] dx = new SetInterval[n];
@@ -100,6 +105,11 @@ public class GradientEvaluator {
         }
 
         return new Gradient(x, dx);
+    }
+
+    public Gradient max(Gradient g1, Gradient g2, double number) {
+        Gradient g3 = new Gradient(number, n, ic);
+        return max(max(g1, g2), g3);
     }
 
     public Gradient abs(Gradient g1) {

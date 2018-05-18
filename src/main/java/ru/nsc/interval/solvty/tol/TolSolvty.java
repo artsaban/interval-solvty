@@ -10,7 +10,7 @@ public class TolSolvty implements IWithEstimator {
     public IIntervalSolvty getInstance() {
         return new IntervalSolvty(
             new TolEstimator(),
-            new TolGradient()
+            new TolSupergradient()
         );
     }
 
