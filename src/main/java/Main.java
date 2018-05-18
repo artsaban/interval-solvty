@@ -84,13 +84,13 @@ public class Main {
         };
 
         SetInterval[] x = {
-            ic.numsToInterval(-1000001, -1000000),
-            ic.numsToInterval(-1000001, -1000000),
-            ic.numsToInterval(-1000001, -1000000),
-            ic.numsToInterval(-1000001, -1000000),
-            ic.numsToInterval(-1000001, -1000000),
-            ic.numsToInterval(-1000001, -1000000),
-            ic.numsToInterval(-1000001, -1000000),
+            ic.numsToInterval(-1000001, 1000000),
+            ic.numsToInterval(-1000001, 1000000),
+            ic.numsToInterval(-1000001, 1000000),
+            ic.numsToInterval(-1000001, 1000000),
+            ic.numsToInterval(-1000001, 1000000),
+            ic.numsToInterval(-1000001, 1000000),
+            ic.numsToInterval(-1000001, 1000000),
         };
 
         ExtendedRational eps = ExtendedRational.valueOf(1.e-1);
@@ -107,11 +107,11 @@ public class Main {
 
         long startTime = System.nanoTime();
 
-//        PriorityQueue<ListItem> foo = ussSolvty.getInstance().calc(x, a, b, eps, ic, rc);
-//        System.out.println(foo.peek());
+        PriorityQueue<ListItem> foo = unsSolvty.getInstance().calc(x, a, b, eps, ic, rc);
+        System.out.println(foo.peek());
 
-//        PriorityQueue<ListItemGradient> bar = ussSolvtyGradient.getInstance().calc(x, a, b, eps, ic, rc);
-//        System.out.println(bar.peek());
+        PriorityQueue<ListItemGradient> bar = unsSolvtyGradient.getInstance().calc(x, a, b, eps, ic, rc);
+        System.out.println(bar.peek());
 
         long endTime = System.nanoTime();
         long totalTime = endTime - startTime;
