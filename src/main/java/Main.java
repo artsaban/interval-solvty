@@ -19,6 +19,7 @@ import ru.nsc.interval.solvty.uns.UnsEstimator;
 import ru.nsc.interval.solvty.uns.UnsSolvty;
 import ru.nsc.interval.solvty.uns.UnsSolvtyGradient;
 import ru.nsc.interval.solvty.uss.UssEstimator;
+import ru.nsc.interval.solvty.uss.UssMeanValueEstimator;
 import ru.nsc.interval.solvty.uss.UssSolvty;
 import ru.nsc.interval.solvty.uss.UssSolvtyGradient;
 
@@ -83,16 +84,16 @@ public class Main {
         };
 
         SetInterval[] x = {
-            ic.numsToInterval(-1000000, 1000000),
-            ic.numsToInterval(-1000000, 1000000),
-            ic.numsToInterval(-1000000, 1000000),
-            ic.numsToInterval(-1000000, 1000000),
-            ic.numsToInterval(-1000000, 1000000),
-            ic.numsToInterval(-1000000, 1000000),
-            ic.numsToInterval(-1000000, 1000000)
+            ic.numsToInterval(-1000001, -1000000),
+            ic.numsToInterval(-1000001, -1000000),
+            ic.numsToInterval(-1000001, -1000000),
+            ic.numsToInterval(-1000001, -1000000),
+            ic.numsToInterval(-1000001, -1000000),
+            ic.numsToInterval(-1000001, -1000000),
+            ic.numsToInterval(-1000001, -1000000),
         };
 
-        ExtendedRational eps = ExtendedRational.valueOf(1.e-6);
+        ExtendedRational eps = ExtendedRational.valueOf(1.e-1);
 
         TolSolvty tolSolvty = new TolSolvty();
         UniSolvty uniSolvty = new UniSolvty();
@@ -106,11 +107,11 @@ public class Main {
 
         long startTime = System.nanoTime();
 
-//        PriorityQueue<ListItem> foo = uniSolvty.getInstance().calc(x, a, b, eps, ic, rc);
+//        PriorityQueue<ListItem> foo = ussSolvty.getInstance().calc(x, a, b, eps, ic, rc);
 //        System.out.println(foo.peek());
 
-        PriorityQueue<ListItemGradient> bar = uniSolvtyGradient.getInstance().calc(x, a, b, eps, ic, rc);
-        System.out.println(bar.peek());
+//        PriorityQueue<ListItemGradient> bar = ussSolvtyGradient.getInstance().calc(x, a, b, eps, ic, rc);
+//        System.out.println(bar.peek());
 
         long endTime = System.nanoTime();
         long totalTime = endTime - startTime;
