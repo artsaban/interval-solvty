@@ -47,9 +47,10 @@ public class ListItem implements Comparable<ListItem> {
     public String toString() {
         StringBuilder outString = new StringBuilder();
 
+        outString.append("(");
         for (int i = 0; i < this.getArgument().length; i++) {
             outString
-                .append("([")
+                .append("[")
                 .append(this.getArgument()[i].doubleInf())
                 .append(", ")
                 .append(this.getArgument()[i].doubleSup());

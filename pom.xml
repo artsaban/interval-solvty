@@ -7,6 +7,7 @@
     <groupId>ru.nsc.interval</groupId>
     <artifactId>interval-solvty</artifactId>
     <version>0.1</version>
+
     <build>
         <plugins>
             <plugin>
@@ -15,6 +16,14 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
                 </configuration>
             </plugin>
         </plugins>
@@ -33,12 +42,10 @@
             <artifactId>jinterval</artifactId>
             <version>0.1-pre</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.7</version>
         </dependency>
     </dependencies>
-
 </project>

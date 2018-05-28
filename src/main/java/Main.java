@@ -10,14 +10,8 @@ import optimization.ListItem;
 import optimization.ListItemGradient;
 import ru.nsc.interval.solvty.Utils;
 import ru.nsc.interval.solvty.tol.*;
-import ru.nsc.interval.solvty.uni.Uni;
-import ru.nsc.interval.solvty.uni.UniEstimator;
-import ru.nsc.interval.solvty.uni.UniSolvty;
-import ru.nsc.interval.solvty.uni.UniSolvtyGradient;
-import ru.nsc.interval.solvty.uns.Uns;
-import ru.nsc.interval.solvty.uns.UnsEstimator;
-import ru.nsc.interval.solvty.uns.UnsSolvty;
-import ru.nsc.interval.solvty.uns.UnsSolvtyGradient;
+import ru.nsc.interval.solvty.uni.*;
+import ru.nsc.interval.solvty.uns.*;
 import ru.nsc.interval.solvty.uss.UssEstimator;
 import ru.nsc.interval.solvty.uss.UssMeanValueEstimator;
 import ru.nsc.interval.solvty.uss.UssSolvty;
@@ -84,13 +78,13 @@ public class Main {
         };
 
         SetInterval[] x = {
-            ic.numsToInterval(-1000001, 1000000),
-            ic.numsToInterval(-1000001, 1000000),
-            ic.numsToInterval(-1000001, 1000000),
-            ic.numsToInterval(-1000001, 1000000),
-            ic.numsToInterval(-1000001, 1000000),
-            ic.numsToInterval(-1000001, 1000000),
-            ic.numsToInterval(-1000001, 1000000),
+            ic.numsToInterval(-1000000000, 1000000000),
+            ic.numsToInterval(-1000000000, 1000000000),
+            ic.numsToInterval(-1000000000, 1000000000),
+            ic.numsToInterval(-1000000000, 1000000000),
+            ic.numsToInterval(-1000000000, 1000000000),
+            ic.numsToInterval(-1000000000, 1000000000),
+            ic.numsToInterval(-1000000000, 1000000000),
         };
 
         ExtendedRational eps = ExtendedRational.valueOf(1.e-1);
@@ -107,14 +101,16 @@ public class Main {
 
         long startTime = System.nanoTime();
 
-        PriorityQueue<ListItem> foo = unsSolvty.getInstance().calc(x, a, b, eps, ic, rc);
-        System.out.println(foo.peek());
+//        PriorityQueue<ListItem> foo = ussSolvty.getInstance().calc(x, a, b, eps, ic, rc);
 
         PriorityQueue<ListItemGradient> bar = unsSolvtyGradient.getInstance().calc(x, a, b, eps, ic, rc);
-        System.out.println(bar.peek());
 
         long endTime = System.nanoTime();
         long totalTime = endTime - startTime;
+
         System.out.println(totalTime / 1000000000.0);
+        for (int i = 0; i < 1; i++) {
+            System.out.println(bar.poll());
+        }
     }
 }

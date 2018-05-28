@@ -50,12 +50,12 @@ public class TolMeanValueEstimator implements IGradientEvaluator {
                 sumOfMin
             );
 
-            // Tol^{abs}
-            hl = ge.abs(hl);
-            hr = ge.abs(hr);
+//          Tol^{abs}
+//            hl = ge.abs(hl);
+//            hr = ge.abs(hr);
 
-//            // Tol
-//            hl = ge.neg(hl);
+//          Tol
+            hl = ge.neg(hl);
 
             tt = ge.sub(
                 b[i].rad(),

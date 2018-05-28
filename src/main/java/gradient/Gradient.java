@@ -43,4 +43,12 @@ public class Gradient {
         Arrays.fill(dx, ic.numsToInterval(0, 0));
         this.dx = dx;
     }
+
+    @Override
+    public String toString() {
+        return "Gradient{" +
+            "x=" + x +
+            ", dx=" + Arrays.toString(dx) +
+            '}';
+    }
 }
